@@ -24,7 +24,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding-top: 15px;
+            padding-top: max(15px, env(safe-area-inset-top));
         }
 
         nav {
@@ -34,7 +34,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
+            height: 90px;
         }
 
         .logo {
@@ -91,6 +91,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            margin-top: 20px;
         }
 
         .hero::before {
@@ -542,9 +543,27 @@
 
         /* 響應式設計 */
         @media (max-width: 768px) {
+            nav {
+                height: auto;
+                padding: 15px 20px;
+                flex-wrap: wrap;
+            }
+
             .nav-links {
-                gap: 15px;
+                gap: 10px;
                 font-size: 14px;
+                width: 100%;
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            .nav-links a:not(.line-btn-nav) {
+                display: none;
+            }
+
+            .line-btn-nav {
+                width: 100%;
+                text-align: center;
             }
 
             .hero-main {
@@ -598,7 +617,7 @@
             nav {
                 flex-wrap: wrap;
                 height: auto;
-                padding: 10px 20px;
+                padding: 15px 20px;
             }
 
             .nav-links {
@@ -608,24 +627,43 @@
                 margin-top: 10px;
             }
 
+            .nav-links a:not(.line-btn-nav) {
+                display: none;
+            }
+
+            .line-btn-nav {
+                width: 100%;
+                text-align: center;
+            }
+
             .logo {
                 width: 100%;
             }
 
+            .hero {
+                padding: 60px 20px;
+                min-height: 500px;
+            }
+
             .hero-main {
-                font-size: 24px;
+                font-size: 28px;
             }
 
             section {
-                padding: 40px 20px;
+                padding: 50px 20px;
             }
 
             section h2 {
-                font-size: 22px;
+                font-size: 28px;
             }
 
             .pricing-table {
-                font-size: 12px;
+                font-size: 13px;
+            }
+
+            .pricing-table th,
+            .pricing-table td {
+                padding: 12px 8px;
             }
         }
     </style>
