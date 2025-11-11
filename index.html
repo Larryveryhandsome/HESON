@@ -24,7 +24,6 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding-top: max(15px, env(safe-area-inset-top));
         }
 
         nav {
@@ -34,11 +33,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 90px;
+            height: 70px;
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
             color: #2d5f3f;
             letter-spacing: 1px;
@@ -54,7 +53,7 @@
         .nav-links a {
             text-decoration: none;
             color: #333;
-            font-size: 17px;
+            font-size: 15px;
             transition: color 0.3s ease;
             font-weight: 500;
         }
@@ -91,7 +90,6 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            margin-top: 20px;
         }
 
         .hero::before {
@@ -123,7 +121,7 @@
         }
 
         .hero-main {
-            font-size: 56px;
+            font-size: 48px;
             font-weight: 700;
             color: #1f4028;
             margin-bottom: 20px;
@@ -131,7 +129,7 @@
         }
 
         .hero-sub {
-            font-size: 20px;
+            font-size: 18px;
             color: #666;
             margin-bottom: 40px;
             line-height: 1.6;
@@ -176,7 +174,7 @@
         }
 
         section h2 {
-            font-size: 42px;
+            font-size: 36px;
             font-weight: 700;
             color: #1f4028;
             margin-bottom: 50px;
@@ -184,7 +182,7 @@
         }
 
         section h3 {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
             color: #2d5f3f;
             margin-bottom: 15px;
@@ -204,7 +202,7 @@
 
         .about-text p {
             margin-bottom: 20px;
-            font-size: 17px;
+            font-size: 16px;
             line-height: 1.8;
             color: #555;
         }
@@ -257,13 +255,13 @@
             padding: 18px;
             text-align: left;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .pricing-table td {
             padding: 16px 18px;
             border-bottom: 1px solid #f0ede8;
-            font-size: 16px;
+            font-size: 15px;
         }
 
         .pricing-table tr:last-child td {
@@ -340,7 +338,7 @@
         .review-text {
             color: #666;
             margin-bottom: 15px;
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.7;
         }
 
@@ -399,7 +397,7 @@
             padding: 20px;
             color: #666;
             line-height: 1.8;
-            font-size: 16px;
+            font-size: 15px;
         }
 
         .faq-item.active .faq-answer {
@@ -477,7 +475,7 @@
         }
 
         .contact-text {
-            font-size: 20px;
+            font-size: 18px;
             margin-bottom: 40px;
             line-height: 1.8;
         }
@@ -543,27 +541,9 @@
 
         /* 響應式設計 */
         @media (max-width: 768px) {
-            nav {
-                height: auto;
-                padding: 15px 20px;
-                flex-wrap: wrap;
-            }
-
             .nav-links {
-                gap: 10px;
+                gap: 15px;
                 font-size: 14px;
-                width: 100%;
-                flex-direction: column;
-                margin-top: 10px;
-            }
-
-            .nav-links a:not(.line-btn-nav) {
-                display: none;
-            }
-
-            .line-btn-nav {
-                width: 100%;
-                text-align: center;
             }
 
             .hero-main {
@@ -617,7 +597,7 @@
             nav {
                 flex-wrap: wrap;
                 height: auto;
-                padding: 15px 20px;
+                padding: 10px 20px;
             }
 
             .nav-links {
@@ -627,43 +607,24 @@
                 margin-top: 10px;
             }
 
-            .nav-links a:not(.line-btn-nav) {
-                display: none;
-            }
-
-            .line-btn-nav {
-                width: 100%;
-                text-align: center;
-            }
-
             .logo {
                 width: 100%;
             }
 
-            .hero {
-                padding: 60px 20px;
-                min-height: 500px;
-            }
-
             .hero-main {
-                font-size: 28px;
+                font-size: 24px;
             }
 
             section {
-                padding: 50px 20px;
+                padding: 40px 20px;
             }
 
             section h2 {
-                font-size: 28px;
+                font-size: 22px;
             }
 
             .pricing-table {
-                font-size: 13px;
-            }
-
-            .pricing-table th,
-            .pricing-table td {
-                padding: 12px 8px;
+                font-size: 12px;
             }
         }
     </style>
@@ -723,164 +684,79 @@
             <h2>服務方案</h2>
             <p class="services-intro">選擇適合您的訂閱方案，享受固定時段、固定人員的專業清潔服務</p>
             
-            <!-- 家庭清潔訂閱 -->
-            <div style="margin-bottom: 60px;">
-                <h3 style="text-align: center; font-size: 24px; margin-bottom: 30px;">🏠 家庭清潔訂閱制方案</h3>
-                <p style="text-align: center; color: #888; margin-bottom: 25px; font-size: 15px;">每次4小時｜固定時段、固定人員</p>
-                
-                <table class="pricing-table">
-                    <thead>
-                        <tr>
-                            <th>方案名稱</th>
-                            <th>月次數</th>
-                            <th>單次時數</th>
-                            <th>月費</th>
-                            <th>單次均價</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="plan-name">基礎月護</span></td>
-                            <td>4 次</td>
-                            <td>4H</td>
-                            <td><span class="price">NT$8,400</span></td>
-                            <td>NT$2,100</td>
-                        </tr>
-                        <tr>
-                            <td><span class="plan-name">進階月安</span></td>
-                            <td>8 次</td>
-                            <td>4H</td>
-                            <td><span class="price">NT$16,000</span></td>
-                            <td>NT$2,000</td>
-                        </tr>
-                        <tr>
-                            <td><span class="plan-name">尊榮月恆</span></td>
-                            <td>12 次</td>
-                            <td>4H</td>
-                            <td><span class="price">NT$24,600</span></td>
-                            <td>NT$2,050</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>方案代碼</th>
+                        <th>方案名稱</th>
+                        <th>月次數</th>
+                        <th>單次時數</th>
+                        <th>月費</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="plan-name">A-2H</span></td>
+                        <td>輕量清潔 / 基礎月護</td>
+                        <td>4 次</td>
+                        <td>2H</td>
+                        <td><span class="price">NT$3,600</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="plan-name">A-4H</span></td>
+                        <td>輕量清潔 / 基礎月護</td>
+                        <td>4 次</td>
+                        <td>4H</td>
+                        <td><span class="price">NT$7,200</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="plan-name">B-2H</span></td>
+                        <td>家庭必備 / 進階月安</td>
+                        <td>8 次</td>
+                        <td>2H</td>
+                        <td><span class="price">NT$6,800</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="plan-name">B-4H</span></td>
+                        <td>家庭必備 / 進階月安</td>
+                        <td>8 次</td>
+                        <td>4H</td>
+                        <td><span class="price">NT$13,760</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="plan-name">C-2H</span></td>
+                        <td>豪華管家 / 尊榮月恆</td>
+                        <td>12 次</td>
+                        <td>2H</td>
+                        <td><span class="price">NT$10,800</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="plan-name">C-4H</span></td>
+                        <td>豪華管家 / 尊榮月恆</td>
+                        <td>12 次</td>
+                        <td>4H</td>
+                        <td><span class="price">NT$19,200</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="special-note">
+                <strong>✨ C-4H 購買者優惠：</strong><br>
+                每季購買一次 8H 團隊大掃除，享受更深層的家居清潔護理。
             </div>
 
-            <!-- 辦公室清潔訂閱 -->
-            <div style="margin-bottom: 60px;">
-                <h3 style="text-align: center; font-size: 24px; margin-bottom: 30px;">💼 辦公室清潔訂閱制方案</h3>
-                <p style="text-align: center; color: #888; margin-bottom: 25px; font-size: 15px;">每次4小時｜適合企業、工作室</p>
-                
-                <table class="pricing-table">
-                    <thead>
-                        <tr>
-                            <th>月次數</th>
-                            <th>單次時數</th>
-                            <th>月費</th>
-                            <th>單次均價</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>4 次</td>
-                            <td>4H</td>
-                            <td><span class="price">NT$9,200</span></td>
-                            <td>NT$2,300</td>
-                        </tr>
-                        <tr>
-                            <td>8 次</td>
-                            <td>4H</td>
-                            <td><span class="price">NT$18,000</span></td>
-                            <td>NT$2,250</td>
-                        </tr>
-                        <tr>
-                            <td>12 次</td>
-                            <td>4H</td>
-                            <td><span class="price">NT$26,400</span></td>
-                            <td>NT$2,200</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="single-service">
+                <h3 style="margin-bottom: 10px;">💡 單次服務</h3>
+                <p><strong>深層清潔一次 4H：NT$1,800</strong></p>
+                <p style="margin-top: 10px; font-size: 14px; color: #888;">※ 訂閱戶享優先排程</p>
             </div>
 
-            <!-- 店家商業空間清潔 -->
-            <div style="margin-bottom: 60px;">
-                <h3 style="text-align: center; font-size: 24px; margin-bottom: 30px;">🏪 店家 / 商業空間清潔</h3>
-                <p style="text-align: center; color: #888; margin-bottom: 25px; font-size: 15px;">每次4小時｜零售、餐飲、美容等商業空間</p>
-                
-                <table class="pricing-table">
-                    <thead>
-                        <tr>
-                            <th>服務方案</th>
-                            <th>單次時數</th>
-                            <th>月費 / 單次費</th>
-                            <th>單次均價</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>單次服務</td>
-                            <td>4H</td>
-                            <td><span class="price">NT$2,500</span></td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>月度方案</td>
-                            <td>4H</td>
-                            <td><span class="price">NT$10,000</span></td>
-                            <td>4次 (NT$2,500)</td>
-                        </tr>
-                        <tr>
-                            <td>進階方案</td>
-                            <td>4H</td>
-                            <td><span class="price">NT$19,200</span></td>
-                            <td>8次 (NT$2,400)</td>
-                        </tr>
-                        <tr>
-                            <td>尊榮方案</td>
-                            <td>4H</td>
-                            <td><span class="price">NT$28,200</span></td>
-                            <td>12次 (NT$2,350)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- 大掃除/換季深層清潔 -->
-            <div style="margin-bottom: 40px;">
-                <h3 style="text-align: center; font-size: 24px; margin-bottom: 30px;">✨ 大掃除 / 換季深層清潔</h3>
-                <p style="text-align: center; color: #888; margin-bottom: 25px; font-size: 15px;">依需求彈性安排｜年節、換季專案</p>
-                
-                <table class="pricing-table">
-                    <thead>
-                        <tr>
-                            <th>服務時數</th>
-                            <th>費用</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>4 小時</td>
-                            <td><span class="price">NT$2,400</span></td>
-                        </tr>
-                        <tr>
-                            <td>8 小時</td>
-                            <td><span class="price">NT$4,600</span></td>
-                        </tr>
-                        <tr>
-                            <td>12 小時</td>
-                            <td><span class="price">NT$6,800</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="special-note" style="margin-top: 40px;">
+            <div class="special-note" style="margin-top: 25px;">
                 <strong>📋 服務特色：</strong><br>
                 ✓ 固定時段、固定人員為原則<br>
-                ✓ LINE 即時回報清潔進度<br>
-                ✓ SOP 標準化清潔流程<br>
-                ✓ 清楚的清潔前後照片紀錄<br>
-                ✓ 彈性調整，可供分區 / 分層清潔<br>
-                ✓ 服務範圍：宜蘭、雙北、其他地區可洽談
+                ✓ 可供分區 / 分層清潔<br>
+                ✓ 年節清潔主打「訂閱戶優先、優惠價」<br>
+                ✓ 雙北 / 跨區服務免費洽談，運費可議
             </div>
         </div>
     </section>
