@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HESON 赫頌家事管理 - 專業訂閱制清潔服務</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* 導航列 */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d5f3f;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #8b9d7e;
+        }
+
+        .line-btn-nav {
+            background-color: #2d5f3f;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .line-btn-nav:hover {
+            background-color: #1f4028;
+        }
+
+        /* 首頁大圖部分 */
+        .hero {
+            background: linear-gradient(135deg, #f5f1ed 0%, #faf8f5 100%);
+            padding: 100px 20px;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 157, 126, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 193, 158, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-main {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1f4028;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-highlight {
+            color: #8b9d7e;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #2d5f3f;
+            color: white;
+            padding: 16px 48px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(45, 95, 63, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #1f4028;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 95, 63, 0.3);
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 章節 */
+        section {
+            padding: 80px 20px;
+        }
+
+        section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1f4028;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        section h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2d5f3f;
+            margin-bottom: 15px;
+        }
+
+        /* 關於我們 */
+        #about {
+            background-color: #faf8f5;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-highlight {
+            color: #8b9d7e;
+            font-weight: 600;
+        }
+
+        .service-scope {
+            background-color: #f5f1ed;
+            padding: 25px;
+            border-left: 4px solid #8b9d7e;
+            margin-top: 30px;
+            border-radius: 4px;
+        }
+
+        .service-scope strong {
+            color: #2d5f3f;
+        }
+
+        /* 服務方案 */
+        #services {
+            background-color: #fff;
+        }
+
+        .services-intro {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 16px;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+
+        .pricing-table th {
+            background-color: #2d5f3f;
+            color: white;
+            padding: 18px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .pricing-table td {
+            padding: 16px 18px;
+            border-bottom: 1px solid #f0ede8;
+            font-size: 15px;
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pricing-table tr:hover {
+            background-color: #faf8f5;
+        }
+
+        .plan-name {
+            font-weight: 600;
+            color: #2d5f3f;
+        }
+
+        .price {
+            font-weight: 700;
+            color: #8b9d7e;
+            font-size: 18px;
+        }
+
+        .special-note {
+            background-color: #f5f1ed;
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 30px;
+            font-size: 15px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .special-note strong {
+            color: #2d5f3f;
+        }
+
+        .single-service {
+            background-color: #faf8f5;
+            padding: 25px;
+            border-radius: 6px;
+            margin-top: 25px;
+            border-left: 4px solid #d4c19e;
+        }
+
+        /* 客戶好評 */
+        #reviews {
+            background-color: #faf8f5;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .stars {
+            color: #d4c19e;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .review-text {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: #2d5f3f;
+            font-size: 14px;
+        }
+
+        /* 常見問題 */
+        #faq {
+            background-color: #fff;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            background-color: #faf8f5;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            background-color: #f5f1ed;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #2d5f3f;
+            user-select: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #ede7e0;
+        }
+
+        .faq-toggle {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            color: #8b9d7e;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 20px;
+            color: #666;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* 預約流程 */
+        #process {
+            background-color: #faf8f5;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: #2d5f3f;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #2d5f3f;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .step-desc {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 65px;
+            color: #8b9d7e;
+            font-size: 24px;
+        }
+
+        /* 聯繫區域 */
+        #contact {
+            background: linear-gradient(135deg, #2d5f3f 0%, #1f4028 100%);
+            color: white;
+            text-align: center;
+        }
+
+        #contact h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-text {
+            font-size: 18px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .contact-button {
+            background-color: #d4c19e;
+            color: #1f4028;
+            padding: 16px 48px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-button:hover {
+            background-color: #e8d9b8;
+            transform: translateY(-2px);
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: #1f4028;
+            color: #ccc;
+            padding: 40px 20px 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .footer-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .footer-copyright {
+            border-top: 1px solid #2d5f3f;
+            padding-top: 20px;
+            color: #999;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero-main {
+                font-size: 32px;
+            }
+
+            .hero-sub {
+                font-size: 16px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .process-step::after {
+                content: '↓';
+                right: auto;
+                top: auto;
+                bottom: -30px;
+            }
+
+            .pricing-table {
+                font-size: 13px;
+            }
+
+            .pricing-table th,
+            .pricing-table td {
+                padding: 12px;
+            }
+
+            .footer-info {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 10px 20px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .logo {
+                width: 100%;
+            }
+
+            .hero-main {
+                font-size: 24px;
+            }
+
+            section {
+                padding: 40px 20px;
+            }
+
+            section h2 {
+                font-size: 22px;
+            }
+
+            .pricing-table {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航列 -->
+    <header>
+        <nav>
+            <div class="logo">HESON 赫頌</div>
+            <ul class="nav-links">
+                <li><a href="#hero">首頁</a></li>
+                <li><a href="#about">關於我們</a></li>
+                <li><a href="#services">服務方案</a></li>
+                <li><a href="#reviews">客戶好評</a></li>
+                <li><a href="#faq">常見問題</a></li>
+                <li><a class="line-btn-nav" href="https://lin.ee/kEz7xjQ" target="_blank">LINE 聯繫</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 首頁大圖 -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-main">把時間留給家人、把清潔交給專業。</h1>
+            <p class="hero-sub"><span class="hero-highlight">訂閱制清潔</span> • 固定時段 • 固定人員優先</p>
+            <a href="https://lin.ee/kEz7xjQ" target="_blank" class="cta-button">立即預約試掃</a>
+        </div>
+    </section>
+
+    <!-- 關於我們 -->
+    <section id="about">
+        <div class="container">
+            <h2>關於 HESON</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>品牌精神</h3>
+                    <p>我們是<span class="about-highlight">「HESON 赫頌家事管理」</span>，提供訂閱制居家清潔服務，結合 LINE 即時回報、SOP 清潔流程、清楚的前後展示照片。</p>
+                    <p>我們盡力打造<span class="about-highlight">「賞美、效率、體貼」</span>共存的貼心服務，讓每個家庭、店家在繁忙中也能擁有一個乾淨舒適的空間。</p>
+                    <p style="margin-top: 30px; font-size: 14px; color: #999;">我們承諾用專業的清潔技術、親切的服務態度，定期守護您和家人的居家衛生，讓您有更多時間享受家庭時光。</p>
+                </div>
+                <div>
+                    <h3>服務範圍</h3>
+                    <div class="service-scope">
+                        <p><strong>主要服務地區：</strong></p>
+                        <p style="margin: 15px 0 0 0;">🏠 宜蘭地區<br>
+                        🏢 雙北地區</p>
+                        <p style="margin: 20px 0 0 0; font-size: 14px; color: #888;"><strong>其他地區：</strong>配合訂閱方案，運費可議</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服務方案 -->
+    <section id="services">
+        <div class="container">
+            <h2>服務方案</h2>
+            <p class="services-intro">選擇適合您的訂閱方案，享受固定時段、固定人員的專業清潔服務</p>
+            
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>方案代碼</th>
+                        <th>方案名稱</th>
+                        <th>月次數</th>
+                        <th>單次時數</th>
+                        <th>月費</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="plan-name">A-2H</span></td>
+                        <td>輕量清潔 / 基礎月護</td>
+                        <td>4 次</td>
+                        <td>2H</td>
+                        <td><span class="price">NT$3,600</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="plan-name">A-4H</span></td>
+                        <td>輕量清潔 / 基礎月護</td>
+                        <td>4 次</td>
+                        <td>4H</td>
+                        <td><span class="price">NT$7,200</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="plan-name">B-2H</span></td>
+                        <td>家庭必備 / 進階月安</td>
+                        <td>8 次</td>
+                        <td>2H</td>
+                        <td><span class="price">NT$6,800</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="plan-name">B-4H</span></td>
+                        <td>家庭必備 / 進階月安</td>
+                        <td>8 次</td>
+                        <td>4H</td>
+                        <td><span class="price">NT$13,760</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="plan-name">C-2H</span></td>
+                        <td>豪華管家 / 尊榮月恆</td>
+                        <td>12 次</td>
+                        <td>2H</td>
+                        <td><span class="price">NT$10,800</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="plan-name">C-4H</span></td>
+                        <td>豪華管家 / 尊榮月恆</td>
+                        <td>12 次</td>
+                        <td>4H</td>
+                        <td><span class="price">NT$19,200</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="special-note">
+                <strong>✨ C-4H 購買者優惠：</strong><br>
+                每季購買一次 8H 團隊大掃除，享受更深層的家居清潔護理。
+            </div>
+
+            <div class="single-service">
+                <h3 style="margin-bottom: 10px;">💡 單次服務</h3>
+                <p><strong>深層清潔一次 4H：NT$1,800</strong></p>
+                <p style="margin-top: 10px; font-size: 14px; color: #888;">※ 訂閱戶享優先排程</p>
+            </div>
+
+            <div class="special-note" style="margin-top: 25px;">
+                <strong>📋 服務特色：</strong><br>
+                ✓ 固定時段、固定人員為原則<br>
+                ✓ 可供分區 / 分層清潔<br>
+                ✓ 年節清潔主打「訂閱戶優先、優惠價」<br>
+                ✓ 雙北 / 跨區服務免費洽談，運費可議
+            </div>
+        </div>
+    </section>
+
+    <!-- 客戶好評 -->
+    <section id="reviews">
+        <div class="container">
+            <h2>客戶好評</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">「服務真的很細心，每次都能看到清潔前後的差異，還有 LINE 即時回報進度，很放心！」</p>
+                    <p class="review-author">— 宜蘭 王媽媽</p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">「固定時段、固定人員真的很貼心，清潔人員很專業，家裡環境整潔許多。」</p>
+                    <p class="review-author">— 雙北 李先生</p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">「比起一次性清潔，訂閱方案更划算，而且品質穩定。推薦給忙碌的上班族！」</p>
+                    <p class="review-author">— 新北 陳小姐</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常見問題 -->
+    <section id="faq">
+        <div class="container">
+            <h2>常見問題</h2>
+            <div style="max-width: 700px; margin: 0 auto;">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        如何開始訂閱服務？
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        只需三步：1) 點擊 LINE 聯繫我們；2) 填寫預約表單（地址、清潔用具、分類站等資訊）；3) 選擇試掃時段。試掃滿意後即可簽署合約開始訂閱！
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        可以更改清潔時間嗎？
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        我們主要以固定時段為原則，以確保服務品質和人員安排的穩定性。如有臨時需要調整，歡迎透過 LINE 與我們聯繫，我們會盡力協助安排。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        清潔用具需要自備嗎？
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        可自備也可由我們提供。預約時我們會詢問您是否有清潔用具，根據您的情況安排最合適的方案。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        服務範圍包括哪些地區？
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        主要服務地區為宜蘭和雙北地區。其他地區也可配合訂閱方案洽談，運費可議。歡迎透過 LINE 詢問您所在地區是否可提供服務。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        年節期間有優惠嗎？
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        有的！年節清潔主打「訂閱戶優先、優惠價」。C-4H 訂閱戶還能每季購買一次 8H 團隊大掃除，讓您的家居深層護理。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        試掃費用是多少？
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        試掃為 4H / NT$1,800。試掃滿意後簽署合約開始訂閱，試掃費用將納入首月帳單計算（依您選擇的方案）。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 預約流程 -->
+    <section id="process">
+        <div class="container">
+            <h2>預約流程</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">瀏覽服務</div>
+                    <div class="step-desc">了解各項服務方案及內容</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">聯繫我們</div>
+                    <div class="step-desc">點擊 LINE 連結開始對話</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">填寫表單</div>
+                    <div class="step-desc">提供地址、清潔需求等資訊</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">試掃服務</div>
+                    <div class="step-desc">安排 4H 試掃 / NT$1,800</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-title">簽署合約</div>
+                    <div class="step-desc">滿意後簽約開始訂閱</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯繫我們 -->
+    <section id="contact">
+        <div class="container">
+            <h2>立即開始</h2>
+            <div class="contact-content">
+                <p class="contact-text">讓我們幫助您保持一個乾淨舒適的家，您只需享受生活。</p>
+                <a href="https://lin.ee/kEz7xjQ" target="_blank" class="contact-button">點擊 LINE 聯繫</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-section">
+                    <h4>HESON 赫頌家事管理</h4>
+                    <p>提供訂閱制居家清潔服務</p>
+                    <p>LINE: <a href="https://lin.ee/kEz7xjQ" target="_blank" style="color: #8b9d7e;">https://lin.ee/kEz7xjQ</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>服務地區</h4>
+                    <p>🏠 宜蘭地區</p>
+                    <p>🏢 雙北地區</p>
+                    <p>其他地區配合洽談</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速連結</h4>
+                    <p><a href="#services" style="color: #ccc; text-decoration: none;">服務方案</a></p>
+                    <p><a href="#faq" style="color: #ccc; text-decoration: none;">常見問題</a></p>
+                    <p><a href="#process" style="color: #ccc; text-decoration: none;">預約流程</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2025 HESON 赫頌家事管理 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 互動功能 JavaScript -->
+    <script>
+        // FAQ 可摺疊功能
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // 平滑滾動導航
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 導航列活動狀態
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = '#8b9d7e';
+                } else {
+                    link.style.color = '#333';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
